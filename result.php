@@ -1,11 +1,42 @@
 <?php include_once('config.php');?>
 <?php include_once('header.php');?>
 <?php require_once('functions.php');?>
+<?php
+    //searching in DATABASE
 
+    $categorie=@$_POST['category'];
+    if($categorie == "tous")
+        if(empty($_POST['search_name']))
+        {
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
+        }
+        else
+        {
+            $search_name=@$_POST['search_name'];
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name';";
+        }
+    else
+    {
+        if(empty($_POST['search_name']))
+        {
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
+        }
+        else
+        {
+            $search_name=@$_POST['search_name'];
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' AND `categorie` LIKE '$categorie';";
+        }
+    }
+    $result=mysqli_query($id,$query);
+?>
 <div class="container p-2">
     <header class="">
         <div class="d-flex justify-content-between">
-            <h4>PC HP i5</h4>
+            <h4>
+            <?php
+            echo strtoupper($categorie);
+            ?>
+            </h4>
             <div class="d-flex align-items-center">
                 <span  class="text-nowrap px-2">Trier par: </span>
                 <select name="order" class="form-select">
@@ -15,19 +46,28 @@
             </div>
         </div>
         <div class="d-flex justify-content-between">
-            <p><span class="results">545</span> resultats</p>
+            <p><span class="results">
+            <?php
+            echo mysqli_num_rows($result);
+            ?>
+            </span> resultats</p>
         </div>
     </header>
 
     <div class="row">
         <?php
-            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
-            $result=mysqli_query($id,$query);
-            $ligne=mysqli_fetch_row($result);
-            while($ligne)
+            if(mysqli_num_rows($result) != 0)
             {
-                items_display($ligne[0],$ligne[1],$ligne[2]);
                 $ligne=mysqli_fetch_row($result);
+                while($ligne)
+                {
+                    items_display($ligne[0],$ligne[1],$ligne[2]);
+                    $ligne=mysqli_fetch_row($result);
+                }
+            }
+            else
+            {
+                echo "<h3>Aucune Correspandance</h3>";
             }
         ?>
     </div>
