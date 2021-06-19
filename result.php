@@ -1,4 +1,7 @@
-<?php include('header.php'); ?>
+<?php include_once('config.php');?>
+<?php include_once('header.php');?>
+<?php require_once('functions.php');?>
+
 <div class="container p-2">
     <header class="">
         <div class="d-flex justify-content-between">
@@ -15,157 +18,18 @@
             <p><span class="results">545</span> resultats</p>
         </div>
     </header>
+
     <div class="row">
-    <div class="col-md-4 col-sm-6">
-            <div class="shadow px-3 py-4">
-                <div class="">
-                    <div class="">
-                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
-                        <div class="p-1">
-                            <div class="">
-                                <div class="">
-                                    <span>Article</span>
-                                    <span class="title">HP Notebook</span>
-                                </div>
-                                <div class="ml-auto">
-                                <span>Prix</span>
-                                    <span class="price">7665</span>$
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <input class="btn btn-search mx-1" type="button" value="Acheter">
-                            <input class="btn btn-primary mx-1" type="button" value="Ajouter au panier">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="shadow px-3 py-4">
-                <div class="">
-                    <div class="">
-                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
-                        <div class="p-1">
-                            <div class="">
-                                <div class="">
-                                    <span>Article</span>
-                                    <span class="title">HP Notebook</span>
-                                </div>
-                                <div class="ml-auto">
-                                <span>Prix</span>
-                                    <span class="price">7665</span>$
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <input class="btn btn-search mx-1" type="button" value="Acheter">
-                            <input class="btn btn-primary mx-1" type="button" value="Ajouter au panier">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="shadow px-3 py-4">
-                <div class="">
-                    <div class="">
-                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
-                        <div class="p-1">
-                            <div class="">
-                                <div class="">
-                                    <span>Article</span>
-                                    <span class="title">HP Notebook</span>
-                                </div>
-                                <div class="ml-auto">
-                                <span>Prix</span>
-                                    <span class="price">7665</span>$
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <input class="btn btn-search mx-1" type="button" value="Acheter">
-                            <input class="btn btn-primary mx-1" type="button" value="Ajouter au panier">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="shadow px-3 py-4">
-                <div class="">
-                    <div class="">
-                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
-                        <div class="p-1">
-                            <div class="">
-                                <div class="">
-                                    <span>Article</span>
-                                    <span class="title">HP Notebook</span>
-                                </div>
-                                <div class="ml-auto">
-                                <span>Prix</span>
-                                    <span class="price">7665</span>$
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <input class="btn btn-search mx-1" type="button" value="Acheter">
-                            <input class="btn btn-primary mx-1" type="button" value="Ajouter au panier">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="shadow px-3 py-4">
-                <div class="">
-                    <div class="">
-                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
-                        <div class="p-1">
-                            <div class="">
-                                <div class="">
-                                    <span>Article</span>
-                                    <span class="title">HP Notebook</span>
-                                </div>
-                                <div class="ml-auto">
-                                <span>Prix</span>
-                                    <span class="price">7665</span>$
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <input class="btn btn-search mx-1" type="button" value="Acheter">
-                            <input class="btn btn-primary mx-1" type="button" value="Ajouter au panier">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="shadow px-3 py-4">
-                <div class="">
-                    <div class="">
-                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
-                        <div class="p-1">
-                            <div class="">
-                                <div class="">
-                                    <span>Article</span>
-                                    <span class="title">HP Notebook</span>
-                                </div>
-                                <div class="ml-auto">
-                                <span>Prix</span>
-                                    <span class="price">7665</span>$
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <input class="btn btn-search mx-1" type="button" value="Acheter">
-                            <input class="btn btn-primary mx-1" type="button" value="Ajouter au panier">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
+            $result=mysqli_query($id,$query);
+            $ligne=mysqli_fetch_row($result);
+            while($ligne)
+            {
+                items_display($ligne[0],$ligne[1],$ligne[2]);
+                $ligne=mysqli_fetch_row($result);
+            }
+        ?>
     </div>
 </div>
 <?php include('footer.php'); ?>

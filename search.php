@@ -3,7 +3,7 @@
                <div class="row">
                   <div class="find-box">
                      <h1 class="heading">Chercher un produit ou une marque</h1>
-                     <form action="result.php" method="GET" class="d-flex">
+                     <form action="result.php" method="POST" class="d-flex">
                         <div class="col-sm-5">
                            <div class="form-sh">
                               <input type="text" placeholder="Search something you love" name="q">

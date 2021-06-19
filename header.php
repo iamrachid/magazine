@@ -1,3 +1,22 @@
+<?php 
+   session_start();
+   if(@$_POST['submit'] == "Ajouter au panier")
+   {
+      if(isset($_SESSION["shopping_cart"]))
+      {
+         $count = count($_SESSION["shopping_cart"]);
+         $item_array = array( $_POST["name"] , $_POST["price"] , $_POST["image"]);
+         $_SESSION["shopping_cart"][$count] = $item_array;
+      }
+      else
+      {
+         $item_array = array( $_POST["name"] , $_POST["price"] , $_POST["image"]);
+         $_SESSION["shopping_cart"][0] = $item_array;
+      }
+      
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +39,7 @@
       <!-- Static navbar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                <img src="images/logo.png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,11 +81,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Votre Panier est vide.
+      <?php
+         if(isset($_SESSION["shopping_cart"]))  
+         {  
+            foreach($_SESSION["shopping_cart"] as $value)
+            {
+               echo "<span>$value[0]</span></br>";
+            }
+         }
+         else
+         {
+            echo "Votre panier est vide";
+         }
+      ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Commencer vos achats</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer Vos achats</button>
+        <button type="button" class="btn btn-primary">Proceder Au payement</button>
       </div>
     </div>
   </div>
