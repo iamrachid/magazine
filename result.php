@@ -4,30 +4,29 @@
 <?php
     //searching in DATABASE
 
-    $categorie=@$_POST['category'];
-    if($categorie == "tous")
-        if(empty($_POST['search_name']))
-        {
-            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
-        }
+        $categorie=@$_POST['category'];
+        $search_name=@$_POST['search_name'];
+        if($categorie == "tous")
+            if(empty($search_name))
+            {
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
+            }
+            else
+            {
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name';";
+            }
         else
         {
-            $search_name=@$_POST['search_name'];
-            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name';";
+            if(empty($search_name))
+            {
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$_SESSION[categorie]'";
+            }
+            else
+            {
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' AND `categorie` LIKE '$_SESSION[categorie]';";
+            }
         }
-    else
-    {
-        if(empty($_POST['search_name']))
-        {
-            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
-        }
-        else
-        {
-            $search_name=@$_POST['search_name'];
-            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' AND `categorie` LIKE '$categorie';";
-        }
-    }
-    $result=mysqli_query($id,$query);
+        $result=mysqli_query($id,$query);
 ?>
 <div class="container p-2">
     <header class="">
@@ -61,7 +60,7 @@
                 $ligne=mysqli_fetch_row($result);
                 while($ligne)
                 {
-                    items_display($ligne[0],$ligne[1],$ligne[2]);
+                    items_display($ligne[0],$ligne[1],$ligne[2],$categorie,$search_name);
                     $ligne=mysqli_fetch_row($result);
                 }
             }
