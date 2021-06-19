@@ -19,11 +19,11 @@
         {
             if(empty($search_name))
             {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$_SESSION[categorie]'";
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
             }
             else
             {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' AND `categorie` LIKE '$_SESSION[categorie]';";
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' AND `categorie` LIKE '$categorie';";
             }
         }
         $result=mysqli_query($id,$query);
