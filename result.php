@@ -1,6 +1,7 @@
 <?php include_once('config.php');?>
 <?php include_once('header.php');?>
 <?php require_once('functions.php');?>
+
 <div class="container p-2">
     <header class="">
         <div class="d-flex justify-content-between">
