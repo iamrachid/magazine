@@ -24,9 +24,6 @@
 		console.log("(y)");
 	}
 	
-	
-	
-
 })(jQuery);
 
 
