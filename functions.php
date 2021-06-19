@@ -1,11 +1,11 @@
 <?php
 function items_display($item_name,$item_price,$item_image,$categorie,$search_name) 
 {
-  echo "<div class=\"col-md-4 col-sm-6\">";
+  echo "<div class=\"product col-md-4 col-sm-6\">";
   echo "  <div class=\"shadow px-3 py-4\">";
   echo "      <div class=\"\">";
   echo "          <div  class=\"\">";
-  echo "              <div class=\"\"><img src=\"$item_image\" alt=\"\"></div>";
+  echo "              <div class=\"\"><img class=\"product-img\" src=\"$item_image\" alt=\"\"></div>";
   echo "              <div class=\"p-1\">";
   echo "                  <div class=\"\">";
   echo "                      <div class=\"\">";
