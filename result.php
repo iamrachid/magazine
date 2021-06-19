@@ -20,7 +20,7 @@
             <div class="shadow px-3 py-4">
                 <div class="">
                     <div class="">
-                        <div class=""><img src="https://i.imgur.com/9UYzfny.png" alt=""></div>
+                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
                         <div class="p-1">
                             <div class="">
                                 <div class="">
@@ -45,7 +45,7 @@
             <div class="shadow px-3 py-4">
                 <div class="">
                     <div class="">
-                        <div class=""><img src="https://i.imgur.com/9UYzfny.png" alt=""></div>
+                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
                         <div class="p-1">
                             <div class="">
                                 <div class="">
@@ -70,7 +70,7 @@
             <div class="shadow px-3 py-4">
                 <div class="">
                     <div class="">
-                        <div class=""><img src="https://i.imgur.com/9UYzfny.png" alt=""></div>
+                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
                         <div class="p-1">
                             <div class="">
                                 <div class="">
@@ -95,7 +95,7 @@
             <div class="shadow px-3 py-4">
                 <div class="">
                     <div class="">
-                        <div class=""><img src="https://i.imgur.com/9UYzfny.png" alt=""></div>
+                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
                         <div class="p-1">
                             <div class="">
                                 <div class="">
@@ -120,7 +120,7 @@
             <div class="shadow px-3 py-4">
                 <div class="">
                     <div class="">
-                        <div class=""><img src="https://i.imgur.com/9UYzfny.png" alt=""></div>
+                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
                         <div class="p-1">
                             <div class="">
                                 <div class="">
@@ -145,7 +145,7 @@
             <div class="shadow px-3 py-4">
                 <div class="">
                     <div class="">
-                        <div class=""><img src="https://i.imgur.com/9UYzfny.png" alt=""></div>
+                        <div class=""><img src="images/product/toshiba.png" alt=""></div>
                         <div class="p-1">
                             <div class="">
                                 <div class="">
