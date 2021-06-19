@@ -11,7 +11,6 @@
    <link rel="stylesheet" href="css/font-awesome.min.css?v=1.1">
    <!--bootstrap css-->
    <link rel="stylesheet" href="css/bootstrap.min.css?v=1.1">
-   <link rel="stylesheet" href="css/bootstrap-select.min.css">
    <!--main css-->
    <link rel="stylesheet" href="css/style.css?v=1.1">
 </head>

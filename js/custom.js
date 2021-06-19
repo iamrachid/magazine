@@ -17,10 +17,6 @@
 				$('.top-head').removeClass('fixed-menu');
 			}
 		});
-		
-
-	$('.selectpicker').selectpicker();
-
 
 	/* === select2 === */
 	if ($(".select2").length > 0){
