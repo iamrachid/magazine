@@ -111,7 +111,7 @@ textarea {
 	background-image: url('../images/bg_main.png');
 	padding-bottom: 180px;
 	background-position: center center;
-	min-height: 85vh;
+	min-height: calc(100vh - 120px);
 }
 
 .find-box {
