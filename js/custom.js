@@ -1,88 +1,15 @@
-/*
-  file name : custom.js
-*/
 
 (function($) {
 	"use strict";
 	
-	/*==================================================
-        wow
-	  ===================================================*/
-		new WOW().init();
-	/*==================================================
-        Slider
-	 ===================================================*/
-	 $('.slider').slick({
-		//dots: true,
-		infinite: true,
-		centerMode: true,
-		centerPadding: '12%',
-		slidesToShow: 4,
-		prevArrow: false,
-    	nextArrow: false,
-		autoplay: true,
-  		autoplaySpeed: 2000,
-		speed: 500,
-		responsive: [
-		     {
-			  	breakpoint: 1200,
-			    settings: {
-				slidesToShow: 3
-			  }
-			},
-				{
-			  	breakpoint: 992,
-			    settings: {
-				slidesToShow: 2
-			  }
-			},
-			{
-			  breakpoint: 768,
-			  settings: {
-				arrows: false,
-				centerMode: true,
-				centerPadding: '40px',
-				slidesToShow: 2
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				arrows: false,
-				centerMode: true,
-				centerPadding: '40px',
-				slidesToShow: 1
-			  }
-			}
-		]
-	});
-	
-	/*==================================================
-        Sidebar
-	 ===================================================*/
-	 $("#menu-close").click(function(e) {
-		e.preventDefault();
-		$("#sidebar").toggleClass("active");
-	  });
-	  $("#top-menu").click(function(e) {
-		e.preventDefault();
-		$(this).toggleClass('collapsed');
-		$("#sidebar").toggleClass("active");
-	  });
-	  
-	
-	/*==================================================
-        Toggle
-	 ===================================================*/
-	 
+	/* === Toggle === */
+
 	 $(".navbar-toggle").on("click", function() {
         $(this).toggleClass("active");
         $("#header").toggleClass("head-add");
     });
 	
-	/*==================================================
-        fixed menu
-	  ===================================================*/
+	/* === fixed-menu === */
 		$(window).on('scroll', function () {
 			if ($(window).scrollTop() > 50) {
 				$('.top-head').addClass('fixed-menu');
@@ -91,25 +18,19 @@
 			}
 		});
 		
-	/*==================================================
-		Select2
-	===================================================*/
-	
+
+	$('.selectpicker').selectpicker();
+
+
+	/* === select2 === */
+	if ($(".select2").length > 0){
 		$(".select2").select2();
+		console.log("(y)");
+	}
 	
 	
 	
-	/*==================================================
-        selectpicker 
-	 ===================================================*/
-		$('.selectpicker').selectpicker();
-	
-	
-	
-	
-	
-	
-	
+
 })(jQuery);
 
 
