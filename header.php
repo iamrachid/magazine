@@ -38,9 +38,9 @@
    <!--bootstrap css-->
    <link rel="stylesheet" href="css/bootstrap.min.css?v=1.1">
    <!--main css-->
-   <link rel="stylesheet" href="css/style.css?v=1.2">
+   <link rel="stylesheet" href="css/style.css?v=1.3">
    <!--my custom css-->
-   <script src="./js/functions.js"></script>
+   <script src="js/functions.js"></script>
 </head>
 
 <body <?php if(@$_POST['submit']=="Ajouter au panier"){ echo "onload=\"showCart()\"";} ?>>
@@ -104,7 +104,7 @@
                         echo "      <tr>";
                         echo "   </thead>";
                         $sum=0;
-                        echo " <form action=\"payement.php\" method=\"POST\" >";
+                        echo " <form action=\"payment.php\" method=\"POST\" >";
 
                         foreach($_SESSION["shopping_cart"] as $key=>$value)
                         {
@@ -114,7 +114,7 @@
                            echo "         <img src=\"$value[image]\" alt=\"\" height=\"60px\" width=\"60px\" >";
                            echo "      </th>";
                            echo "      <td>$key</td>";
-                           echo "      <td><input type=\"number\" name=\"quantite[]\" value=\"$value[quantite]\" max=\"99\" min=\"0\"></td>";
+                           echo "      <td><input class=\"w-50\" type=\"number\" name=\"quantite[]\" value=\"$value[quantite]\" max=\"99\" min=\"0\"></td>";
                            echo "      <td>$value[prix]$</td>";
                            echo "      <input type=\"hidden\" name=\"name[]\" value=\"$key\">";
                            echo "      <input type=\"hidden\" name=\"image[]\" value=\"$value[image]\">";
@@ -140,11 +140,12 @@
                </table>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer Vos achats</button>
+               <button type="button" class="btn btn-secondary fs-xs" data-bs-dismiss="modal">Continuer Vos achats</button>
                <?php
                if(isset($_SESSION["shopping_cart"]))  
                {
-                  echo "<input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Proceder Au payement\">";
+                  echo '<button type="button" class="btn btn-outline-danger fs-xs">Vider le panier</button>';
+                  echo "<input type=\"submit\" name=\"submit\" class=\"btn btn-primary fs-xs\" value=\"Proceder Au payement\">";
                   echo "</form>";
                }
                ?>
