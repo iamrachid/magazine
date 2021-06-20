@@ -104,7 +104,7 @@
                         echo "      <tr>";
                         echo "   </thead>";
                         $sum=0;
-                        echo " <form action=\"payment.php\" method=\"POST\" >";
+                        echo " <form action=\"panier.php\" method=\"POST\" >";
 
                         foreach($_SESSION["shopping_cart"] as $key=>$value)
                         {

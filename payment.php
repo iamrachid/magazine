@@ -1,4 +1,4 @@
-<?php include('header');?>
+<?php include('header.php');?>
 
 <div style="min-height:calc(100vh - 115px)" class="p-5 d-flex justify-content-center align-content-center">
         <div class="col-md-8">
@@ -35,4 +35,4 @@
             </div>
         </div>
     </div>
-<?php include('footer'); ?>
+<?php include('footer.php'); ?>
