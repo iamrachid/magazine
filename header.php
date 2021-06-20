@@ -1,19 +1,31 @@
-<?php
-session_start();
-if (@$_POST['submit'] == "Ajouter au panier") {
-   if (isset($_SESSION["shopping_cart"])) {
-      $count = count($_SESSION["shopping_cart"]);
-      $item_array = array($_POST["name"], $_POST["price"], $_POST["image"]);
-      $_SESSION["shopping_cart"][$count] = $item_array;
-   } else {
-      $item_array = array($_POST["name"], $_POST["price"], $_POST["image"]);
-      $_SESSION["shopping_cart"][0] = $item_array;
+<?php 
+   session_start();
+   if(@$_POST['submit'] == "Ajouter au panier")
+   {
+      if(isset($_SESSION["shopping_cart"]))
+      {
+         if(isset($_SESSION["shopping_cart"][$_POST["name"]]))
+         {
+            $_SESSION["shopping_cart"][$_POST["name"]]["quantite"]+=$_POST["quantite"];
+         }
+         else
+         {
+            $item_array = array("quantite"=>$_POST["quantite"], "prix"=>$_POST["price"] ,"image"=>$_POST["image"]);
+            $_SESSION["shopping_cart"]+=array("$_POST[name]" =>$item_array);
+         }
+      }
+      else
+      {
+         $item_array = array("quantite"=>$_POST["quantite"], "prix"=>$_POST["price"] ,"image"=>$_POST["image"]);
+         $_SESSION["shopping_cart"]=array("$_POST[name]" =>$item_array);
+      }
+      
    }
-}
+
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
    <meta charset="UTF-8">
@@ -27,9 +39,11 @@ if (@$_POST['submit'] == "Ajouter au panier") {
    <link rel="stylesheet" href="css/bootstrap.min.css?v=1.1">
    <!--main css-->
    <link rel="stylesheet" href="css/style.css?v=1.2">
+   <!--my custom css-->
+   <script src="./js/functions.js"></script>
 </head>
 
-<body>
+<body <?php if(@$_POST['submit']=="Ajouter au panier"){ echo "onload=\"showCart()\"";} ?>>
    <header>
       <!-- Static navbar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,27 +60,28 @@ if (@$_POST['submit'] == "Ajouter au panier") {
                      <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Informatique</a>
+                     <a class="nav-link" href="informatique.php">Informatique</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Video</a>
+                     <a class="nav-link" href="video.php">Video</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Divers</a>
+                     <a class="nav-link" href="divers.php">Divers</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="photo.php">Photos</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="tous.php">Tous les produits</a>
                   </li>
                </ul>
-               <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-search" type="submit">Search</button>
-               </form>
                <span type="button" class="icon-cart">
-                  <i class="fa fa-shopping-cart" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#cart"></i>
+                  <i  id="but_chart" class="fa fa-shopping-cart" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#cart"></i>
                </span>
             </div>
          </div>
       </nav>
    </header>
-
    <!-- Modal -->
    <div class="modal fade" id="cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -76,51 +91,63 @@ if (@$_POST['submit'] == "Ajouter au panier") {
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <table class="table table-striped">
-                  <thead>
-                     <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Article</th>
-                        <th scope="col">Quantite</th>
-                        <th scope="col">Prix unitaire</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <th scope="row">
-                           <img src="images\product\elitebook.jpg" alt="" height="40" width="40">
-                        </th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                     </tr>
-                     <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                     </tr>
-                     <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                     </tr>
-                  </tbody>
-                  <tfoot>
-                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th scope="col">Total</th>
-                        <th scope="col">656</th>
-                     </tr>
-                  </tfoot>
-               </table>
+                  <?php
+                     if(isset($_SESSION["shopping_cart"]))
+                     {
+                        echo "<table class=\"table table-striped\">";
+                        echo "   <thead>";
+                        echo "      <tr>";
+                        echo "         <th scope=\"col\">Image</th>";
+                        echo "         <th scope=\"col\">Article</th>";
+                        echo "         <th scope=\"col\">Quantite</th>";
+                        echo "         <th scope=\"col\">Prix unitaire</th>";
+                        echo "      <tr>";
+                        echo "   </thead>";
+                        $sum=0;
+                        echo " <form action=\"payement.php\" method=\"POST\" >";
 
+                        foreach($_SESSION["shopping_cart"] as $key=>$value)
+                        {
+                           echo "<tbody>";
+                           echo "   <tr>";
+                           echo "      <th scope=\"row\">";
+                           echo "         <img src=\"$value[image]\" alt=\"\" height=\"60px\" width=\"60px\" >";
+                           echo "      </th>";
+                           echo "      <td>$key</td>";
+                           echo "      <td><input type=\"number\" name=\"quantite[]\" value=\"$value[quantite]\" max=\"99\" min=\"0\"></td>";
+                           echo "      <td>$value[prix]$</td>";
+                           echo "      <input type=\"hidden\" name=\"name[]\" value=\"$key\">";
+                           echo "      <input type=\"hidden\" name=\"image[]\" value=\"$value[image]\">";
+                           echo "      <input type=\"hidden\" name=\"prix[]\" value=\"$value[prix]\">";
+                           $sum+=$value['quantite']*$value['prix'];
+                        }
+                        echo "<tr>";
+                        echo "<th></th>";
+                        echo "<th></th>";
+                        echo "<th scope=\"col\">Total</th>";
+                        echo "<th scope=\"col\">";echo number_format($sum,2);echo "$</th>";
+                        echo "</tr>";
+                        echo "</tfoot>";
+
+                     }
+                     else
+                     {
+                        echo "Panier Vide";
+                     }
+                     
+
+                  ?>
+               </table>
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer Vos achats</button>
-               <button type="button" class="btn btn-primary">Proceder Au payement</button>
+               <?php
+               if(isset($_SESSION["shopping_cart"]))  
+               {
+                  echo "<input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Proceder Au payement\">";
+                  echo "</form>";
+               }
+               ?>
             </div>
          </div>
       </div>

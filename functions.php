@@ -9,11 +9,10 @@ function items_display($item_name,$item_price,$item_image,$categorie,$search_nam
   echo "              <div class=\"p-1\">";
   echo "                  <div class=\"\">";
   echo "                      <div class=\"\">";
-  echo "                          <span>Article</span>";
   echo "                          <span class=\"title\">$item_name</span>";
   echo "                      </div>";
   echo "                      <div class=\"ml-auto\">";
-  echo "                          <span>Prix</span>";
+  echo "                          <span>Prix :</span>";
   echo "                          <span class=\"price\">$item_price</span>$";
   echo "                      </div>";
   echo "                  </div>";
@@ -25,6 +24,8 @@ function items_display($item_name,$item_price,$item_image,$categorie,$search_nam
   echo "                  <input type=\"hidden\" name=\"image\" value=\"$item_image\">";
   echo "                  <input type=\"hidden\" name=\"category\" value=\"$categorie\">";
   echo "                  <input type=\"hidden\" name=\"search_name\" value=\"$search_name\">";
+  echo "                  <span> Quantité : </span>";
+  echo "                  <input type=\"number\" min=\"0\" name=\"quantite\" value=\"1\" max=\"99\"> </br>";
   echo "                  <input class=\"btn btn-primary mx-1\" type=\"submit\" name=\"submit\" value=\"Ajouter au panier\">";
   echo "                  </form>";
   echo "              </div>";
