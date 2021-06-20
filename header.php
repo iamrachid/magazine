@@ -1,20 +1,15 @@
-<?php 
-   session_start();
-   if(@$_POST['submit'] == "Ajouter au panier")
-   {
-      if(isset($_SESSION["shopping_cart"]))
-      {
-         $count = count($_SESSION["shopping_cart"]);
-         $item_array = array( $_POST["name"] , $_POST["price"] , $_POST["image"]);
-         $_SESSION["shopping_cart"][$count] = $item_array;
-      }
-      else
-      {
-         $item_array = array( $_POST["name"] , $_POST["price"] , $_POST["image"]);
-         $_SESSION["shopping_cart"][0] = $item_array;
-      }
-      
+<?php
+session_start();
+if (@$_POST['submit'] == "Ajouter au panier") {
+   if (isset($_SESSION["shopping_cart"])) {
+      $count = count($_SESSION["shopping_cart"]);
+      $item_array = array($_POST["name"], $_POST["price"], $_POST["image"]);
+      $_SESSION["shopping_cart"][$count] = $item_array;
+   } else {
+      $item_array = array($_POST["name"], $_POST["price"], $_POST["image"]);
+      $_SESSION["shopping_cart"][0] = $item_array;
    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +26,7 @@
    <!--bootstrap css-->
    <link rel="stylesheet" href="css/bootstrap.min.css?v=1.1">
    <!--main css-->
-   <link rel="stylesheet" href="css/style.css?v=1.1">
+   <link rel="stylesheet" href="css/style.css?v=1.2">
 </head>
 
 <body>
@@ -48,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="#">Home</a>
+                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="#">Informatique</a>
@@ -64,41 +59,69 @@
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-search" type="submit">Search</button>
                </form>
-               <span  type="button" class="icon-cart">
-                 <i class="fa fa-shopping-cart" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#cart"></i>
+               <span type="button" class="icon-cart">
+                  <i class="fa fa-shopping-cart" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#cart"></i>
                </span>
             </div>
          </div>
       </nav>
    </header>
 
-<!-- Modal -->
-<div class="modal fade" id="cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Panier</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+   <!-- Modal -->
+   <div class="modal fade" id="cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">Panier</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <table class="table table-striped">
+                  <thead>
+                     <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Article</th>
+                        <th scope="col">Quantite</th>
+                        <th scope="col">Prix unitaire</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row">
+                           <img src="images\product\elitebook.jpg" alt="" height="40" width="40">
+                        </th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                     </tr>
+                     <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                     </tr>
+                     <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                     </tr>
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th></th>
+                        <th></th>
+                        <th scope="col">Total</th>
+                        <th scope="col">656</th>
+                     </tr>
+                  </tfoot>
+               </table>
+
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer Vos achats</button>
+               <button type="button" class="btn btn-primary">Proceder Au payement</button>
+            </div>
+         </div>
       </div>
-      <div class="modal-body">
-      <?php
-         if(isset($_SESSION["shopping_cart"]))  
-         {  
-            foreach($_SESSION["shopping_cart"] as $value)
-            {
-               echo "<span>$value[0]</span></br>";
-            }
-         }
-         else
-         {
-            echo "Votre panier est vide";
-         }
-      ?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer Vos achats</button>
-        <button type="button" class="btn btn-primary">Proceder Au payement</button>
-      </div>
-    </div>
-  </div>
-</div>
+   </div>
