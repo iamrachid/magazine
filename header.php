@@ -25,7 +25,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
    <meta charset="UTF-8">
@@ -39,9 +39,11 @@
    <link rel="stylesheet" href="css/bootstrap.min.css?v=1.1">
    <!--main css-->
    <link rel="stylesheet" href="css/style.css?v=1.2">
+   <!--my custom css-->
+   <script src="./js/functions.js"></script>
 </head>
 
-<body>
+<body <?php if(@$_POST['submit']=="Ajouter au panier"){ echo "onload=\"showCart()\"";} ?>>
    <header>
       <!-- Static navbar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -73,18 +75,13 @@
                      <a class="nav-link" href="tous.php">Tous les produits</a>
                   </li>
                </ul>
-               <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-search" type="submit">Search</button>
-               </form>
                <span type="button" class="icon-cart">
-                  <i class="fa fa-shopping-cart" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#cart"></i>
+                  <i  id="but_chart" class="fa fa-shopping-cart" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#cart"></i>
                </span>
             </div>
          </div>
       </nav>
    </header>
-
    <!-- Modal -->
    <div class="modal fade" id="cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -140,11 +137,7 @@
                      
 
                   ?>
-                        
-                     
-                  
                </table>
-
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer Vos achats</button>
