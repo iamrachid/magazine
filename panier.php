@@ -11,7 +11,7 @@
 <div style="min-height:calc(100vh - 115px)" class="p-5 d-flex justify-content-center align-content-center">
     <div class="row">
         <div class="col-md-7">
-            <div class="p-4 border">
+            <div class="p-4 register border">
                 <div class="d-flex justify-content-between">
                     <span class="fs-m">Information du client</span>
                     <div class="icons">
