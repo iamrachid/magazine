@@ -1,4 +1,5 @@
 <footer>
+<?php //session_destroy(); ?>
    <div class="copyright">
       <div class="container">
          <div class="row">
