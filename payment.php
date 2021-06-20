@@ -1,4 +1,13 @@
-<?php include('header.php'); ?>
+<head>
+    <title>Payment</title>
+       <!--fontawesome css-->
+   <link rel="stylesheet" href="css/font-awesome.min.css?v=1.1">
+   <!--bootstrap css-->
+   <link rel="stylesheet" href="css/bootstrap.min.css?v=1.1">
+   <!--main css-->
+   <link rel="stylesheet" href="css/style.css?v=1.2">
+</head>
+<body>
 <div style="min-height:calc(100vh - 115px)" class="p-5 d-flex justify-content-center align-content-center">
     <div class="row">
         <div class="col-md-7">
@@ -103,4 +112,12 @@
         </div>
     </div>
 </div>
-<?php include('footer.php'); ?>
+
+<!--main js-->
+<script src="js/jquery-1.12.4.min.js"></script>
+<!--bootstrap js-->
+<script src="js/bootstrap.min.js"></script>
+<!--custom js-->
+<script src="js/custom.js"></script>
+
+</body>
