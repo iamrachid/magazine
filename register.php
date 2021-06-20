@@ -74,27 +74,29 @@
         <div class="col-md-5">
             <div class="p-4 border">
                 <div class="header">Votre Panier</div>
-                <p>2 articles</p>
-                <div class="row py-2">
-                    <div class="col-4 align-self-center"><img class="img-fluid" src="https://i.imgur.com/79M6pU0.png"></div>
-                    <div class="col-8">
-                        <div class="row"><b>$ 26.99</b></div>
-                        <div class="row text-muted">Be Legandary Lipstick-Nude rose</div>
-                        <div class="row">Qty:1</div>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-self-center"><img class="img-fluid" src="https://i.imgur.com/Ew8NzKr.jpg"></div>
-                    <div class="col-8">
-                        <div class="row"><b>$ 19.99</b></div>
-                        <div class="row text-muted">Be Legandary Lipstick-Sheer Navy Cream</div>
-                        <div class="row">Qty:1</div>
-                    </div>
-                </div>
+                <?php
+                    $sum=0;
+                    for ($i=0 ; $i < count($_POST['name']) ; $i++)
+                    {
+                        $name=$_POST['name'][$i];
+                        $price=$_POST['prix'][$i];
+                        $image=$_POST['image'][$i];
+                        $quantite=$_POST['quantite'][$i];
+                        echo "<div class=\"row py-2\">";
+                        echo "    <div class=\"col-4 align-self-center\"><img class=\"img-fluid\" src=\"$image\"></div>";
+                        echo "    <div class=\"col-8\">";
+                        echo "        <div class=\"row\"><b>$price$</b></div>";
+                        echo "        <div class=\"row text-muted\">$name</div>";
+                        echo "        <div class=\"row\">Qty:$quantite</div>";
+                        echo "    </div>";
+                        echo "</div>";
+                        $sum+=$price*$quantite;
+                    }
+                ?>
                 <hr>
                 <div class="row lower">
                     <div class="col text-left"><b>Total to pay</b></div>
-                    <div class="col text-right"><b>$ 46.98</b></div>
+                    <div class="col text-right"><b><?php echo number_format($sum,2); ?></b></div>
                 </div>
                 <div class="row lower">
                 </div> 
