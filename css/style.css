@@ -101,9 +101,15 @@ textarea {
 	background-color: #007deaff;
 }
 
-tbody {
+.scroll {
 	max-height: 24rem;
 	overflow-y: scroll;
+}
+
+.panier {
+	height: 448px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 /*------------------------------------------------------------- 
