@@ -108,7 +108,7 @@
 
                         foreach($_SESSION["shopping_cart"] as $key=>$value)
                         {
-                           echo "<tbody>";
+                           echo "<tbody class=\"scroll\">";
                            echo "   <tr>";
                            echo "      <th scope=\"row\">";
                            echo "         <img src=\"$value[image]\" alt=\"\" height=\"60px\" width=\"60px\" >";

@@ -80,9 +80,10 @@
 
             </div>
         </div>
-        <div class="col-md-5">
-            <div class="p-4 border">
+        <div class="col-md-5 border p-4">
+            <div class="">
                 <div class="header">Votre Panier</div>
+                <div class="panier">
                 <?php
                     $sum=0;
                     for ($i=0 ; $i < count($_POST['name']) ; $i++)
@@ -102,15 +103,14 @@
                         $sum+=$price*$quantite;
                     }
                 ?>
+                </div>
                 <hr>
-                <div class="row lower">
+                <div class="row">
                     <div class="col text-left"><b>Total to pay</b></div>
                     <div class="col text-right"><b><?php echo number_format($sum,2); ?></b></div>
                 </div>
-                <div class="row lower">
-                </div> 
-                <button class="btn btn-primary">Place order</button>
             </div>
+            
         </div>
     </div>
 </div>
