@@ -2,30 +2,8 @@
 <?php include_once('header.php');?>
 <?php require_once('functions.php');?>
 <?php
-    //searching in DATABASE
-
-        $categorie=@$_POST['category'];
-        $search_name=@$_POST['search_name'];
-        if($categorie == "tous")
-            if(empty($search_name))
-            {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
-            }
-            else
-            {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name';";
-            }
-        else
-        {
-            if(empty($search_name))
-            {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
-            }
-            else
-            {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' AND `categorie` LIKE '$categorie';";
-            }
-        }
+        $categorie='divers';
+        $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
         $result=mysqli_query($id,$query);
 ?>
 
@@ -59,7 +37,7 @@
                     $ligne=mysqli_fetch_row($result);
                     while($ligne)
                     {
-                        items_display($ligne[0],$ligne[1],$ligne[2],$categorie,$search_name);
+                        items_display($ligne[0],$ligne[1],$ligne[2],@$categorie,@$search_name);
                         $ligne=mysqli_fetch_row($result);
                     }
                 }

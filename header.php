@@ -6,22 +6,17 @@
       {
          if(isset($_SESSION["shopping_cart"][$_POST["name"]]))
          {
-            $_SESSION["shopping_cart"][$_POST["name"]]["quantite"]++;
+            $_SESSION["shopping_cart"][$_POST["name"]]["quantite"]+=$_POST["quantite"];
          }
          else
          {
-            $item_array = array("quantite"=>1, "prix"=>$_POST["price"] ,"image"=>$_POST["image"]);
+            $item_array = array("quantite"=>$_POST["quantite"], "prix"=>$_POST["price"] ,"image"=>$_POST["image"]);
             $_SESSION["shopping_cart"]+=array("$_POST[name]" =>$item_array);
          }
-         /*
-         $count = count($_SESSION["shopping_cart"]);
-         $item_array = array( $_POST["name"] , $_POST["price"] , $_POST["image"]);
-         $_SESSION["shopping_cart"][$count] = $item_array;
-         */
       }
       else
       {
-         $item_array = array("quantite"=>1, "prix"=>$_POST["price"] ,"image"=>$_POST["image"]);
+         $item_array = array("quantite"=>$_POST["quantite"], "prix"=>$_POST["price"] ,"image"=>$_POST["image"]);
          $_SESSION["shopping_cart"]=array("$_POST[name]" =>$item_array);
       }
       
@@ -63,13 +58,19 @@
                      <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Informatique</a>
+                     <a class="nav-link" href="informatique.php">Informatique</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Video</a>
+                     <a class="nav-link" href="video.php">Video</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Divers</a>
+                     <a class="nav-link" href="divers.php">Divers</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="photo.php">Photos</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="tous.php">Tous les produits</a>
                   </li>
                </ul>
                <form class="d-flex">
@@ -127,7 +128,7 @@
                         echo "<th></th>";
                         echo "<th></th>";
                         echo "<th scope=\"col\">Total</th>";
-                        echo "<th scope=\"col\">$sum $</th>";
+                        echo "<th scope=\"col\">";echo number_format($sum,2);echo "$</th>";
                         echo "</tr>";
                         echo "</tfoot>";
 
