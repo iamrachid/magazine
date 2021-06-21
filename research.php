@@ -2,8 +2,16 @@
 <?php include_once('header.php');?>
 <?php require_once('functions.php');?>
 <?php
-        $categorie='divers';
-        $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
+        $categorie=$_GET['search'];
+        if($categorie=="tous")
+        {
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
+        }
+        else
+        {
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
+        }
+
         $result=mysqli_query($id,$query);
 ?>
 

@@ -65,19 +65,19 @@
                      <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="informatique.php">Informatique</a>
+                     <a class="nav-link" href="research.php?search=informatique">Informatique</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="video.php">Video</a>
+                     <a class="nav-link" href="research.php?search=video">Video</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="divers.php">Divers</a>
+                     <a class="nav-link" href="research.php?search=divers">Divers</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="photo.php">Photos</a>
+                     <a class="nav-link" href="research.php?search=photo">Photos</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="tous.php">Tous les produits</a>
+                     <a class="nav-link" href="research.php?search=tous">Tous les produits</a>
                   </li>
                </ul>
                <span type="button" class="icon-cart">
