@@ -1,19 +1,7 @@
 <?php 
     include_once("config.php");
-    session_start();
+    include_once("header2.php");
     $connecte=0;
-?>
-<head>
-    <title>Panier</title>
-       <!--fontawesome css-->
-   <link rel="stylesheet" href="css/font-awesome.min.css?v=1.1">
-   <!--bootstrap css-->
-   <link rel="stylesheet" href="css/bootstrap.min.css?v=1.1">
-   <!--main css-->
-   <link rel="stylesheet" href="css/style.css?v=1.2">
-</head>
-<body>
-<?php
     if(isset($_POST["connecte"]))
     {
 
@@ -45,12 +33,12 @@
                     {
                     ?>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Se connecter</button>
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">Se connecter</button>
                     </li>
 
                     <?php } ?>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><?php if($connecte) { echo "Vos informations";}else{echo "Creer un compte"; }?></button>
+                        <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="false"><?php if($connecte) { echo "Vos informations";}else{echo "Creer un compte"; }?></button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
