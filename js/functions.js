@@ -21,7 +21,6 @@ function validateCard(num)
     }
     if((oddSum + evenSum) % 10 === 0)
     {
-        window.alert("Carte Valide vous receverez votre facture par mail");
         document.location.replace('facture.php');
     }
     else
