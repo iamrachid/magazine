@@ -9,8 +9,8 @@
             $_SESSION['search_name']=@$_POST['search_name'];
         }
         $categorie=$_SESSION['categorie'];
-        $categorie=$_SESSION['search_name'];
-        
+        $search_name=$_SESSION['search_name'];
+
         if($categorie == "tous")
             if(empty($search_name))
             {
