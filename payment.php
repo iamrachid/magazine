@@ -3,15 +3,15 @@
     include('config.php');
 
 
-    if($_POST['existe'] != 1)
+    if(@$_POST['existe'] != 1)
     {
-        $nom=$_POST['nom'];
-        $prenom=$_POST['prenom'];
-        $mail=$_POST['mail'];
-        $password=$_POST['password'];
-        $age=$_POST['age'];
-        $ville=$_POST['ville'];
-        $adresse=$_POST['adresse'];
+        $nom=@$_POST['nom'];
+        $prenom=@$_POST['prenom'];
+        $mail=@$_POST['mail'];
+        $password=@$_POST['password'];
+        $age=@$_POST['age'];
+        $ville=@$_POST['ville'];
+        $adresse=@$_POST['adresse'];
 
         $requete="INSERT INTO `client`(`nom`, `prenom`, `age`, `adresse`, `ville`, `mail`, `pass`) VALUES ('$nom','$prenom','$age','$adresse','$ville','$mail','$password');";
         mysqli_query($id,$requete);
@@ -35,17 +35,17 @@
                         <h5>Information Bancaire</h5>
                         <form method="POST">
                             <span>Card Number:</span>
-                            <input placeholder="999-9999-9999-9909" class="form-control" name="card">
+                            <input id="creditcard" placeholder="999-9999-9999-9909" class="form-control" name="card" required>
                             <div class="row">
                                 <div class="col-6"><span>Expiry date:</span>
-                                    <input placeholder="YY/MM" class="form-control">
+                                    <input placeholder="YY/MM" class="form-control" required>
                                 </div>
                                 <div class="col-6 mb-3 ">
                                     <span>CVV:</span>
-                                    <input id="cvv" placeholder="999" class="form-control">
+                                    <input id="cvv" placeholder="999" class="form-control" required>
                                 </div>
                             </div>
-                            <button class="btn btn-primary">Payer</button>
+                            <button class="btn btn-primary" onclick="validateCard(document.getElementById('creditcard').value)">Payer</button>
                         </form>
                     </div>
                 </div>
