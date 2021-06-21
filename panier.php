@@ -42,7 +42,7 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                         <form action="payment.php" method="POST">
                             <label class="label-control">Nom:</label>
@@ -78,7 +78,7 @@
                     <?php if($connecte != 1)
                     {
                     ?>
-                        <div class="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade text-center show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                                 <label class="form-label" for="mail">
                                     Adresse email:
