@@ -1,11 +1,29 @@
-<?php include('header.php');?>
+<?php 
+    include('header.php');
+    include('config.php');
+
+
+    if($_POST['existe'] != 1)
+    {
+        $nom=$_POST['nom'];
+        $prenom=$_POST['prenom'];
+        $mail=$_POST['mail'];
+        $password=$_POST['password'];
+        $age=$_POST['age'];
+        $ville=$_POST['ville'];
+        $adresse=$_POST['adresse'];
+
+        $requete="INSERT INTO `client`(`nom`, `prenom`, `age`, `adresse`, `ville`, `mail`, `pass`) VALUES ('$nom','$prenom','$age','$adresse','$ville','$mail','$password');";
+        mysqli_query($id,$requete);
+    }
+?>
 
 <div style="min-height:calc(100vh - 115px)" class="p-5 d-flex justify-content-center align-content-center">
         <div class="col-md-8">
             <div class="p-4 border">
                 <div class="d-flex justify-content-between">
                     <span class="fs-m">Total a payer</span>
-                    <span class="fs-m">7t68668$</span>
+                    <span class="fs-m"><?php echo number_format($_SESSION['sum'],2); ?>$</span>
                     <div class="icons">
                         <img src="https://img.icons8.com/color/48/000000/visa.png" class="w-2" />
                         <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" class="w-2" />
