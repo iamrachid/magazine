@@ -42,7 +42,7 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade <?php if($connecte) echo "show active" ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                         <form action="payment.php" method="POST">
                             <label class="label-control">Nom:</label>
