@@ -3,9 +3,14 @@
 <?php require_once('functions.php');?>
 <?php
     //searching in DATABASE
-
-        $categorie=@$_POST['category'];
-        $search_name=@$_POST['search_name'];
+        if(!empty(@$_POST['category']))
+        {
+            $_SESSION['categorie']=@$_POST['category'];
+            $_SESSION['search_name']=@$_POST['search_name'];
+        }
+        $categorie=$_SESSION['categorie'];
+        $categorie=$_SESSION['search_name'];
+        
         if($categorie == "tous")
             if(empty($search_name))
             {

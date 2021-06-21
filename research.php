@@ -2,7 +2,13 @@
 <?php include_once('header.php');?>
 <?php require_once('functions.php');?>
 <?php
-        $categorie=$_GET['search'];
+        if(!empty(@$_GET['search']))
+        {
+                $_SESSION['categorie']=$_GET['search'];
+        }
+
+        $categorie=$_SESSION['categorie'];
+        
         if($categorie=="tous")
         {
             $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
