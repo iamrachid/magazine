@@ -3,7 +3,7 @@
     include('config.php');
 
 
-    if(@$_POST['existe'] != 1)
+    if(@$_POST['existe'] != 1 && !empty(@$_POST['existe']))
     {
         $nom=@$_POST['nom'];
         $prenom=@$_POST['prenom'];
