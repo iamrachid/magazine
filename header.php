@@ -43,7 +43,7 @@
    <!--bootstrap css-->
    <link rel="stylesheet" href="css/bootstrap.min.css?v=1.1">
    <!--main css-->
-   <link rel="stylesheet" href="css/style.css?v=1.3">
+   <link rel="stylesheet" href="css/style.css?v=1.4">
    <!--my custom css-->
    <script src="js/functions.js"></script>
 </head>
