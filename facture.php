@@ -64,16 +64,15 @@
     <div class="w-75 mx-auto">
         <div class="p-4 border w-75 mx-auto">
             <i class="fa fa-check-circle green"></i>
-            Votre Paiement est bien effectué, Vous pouvez consulter votre facture sur votre boite mail.
+            Votre Paiement est bien effectué, Vous pouvez consulter votre reçu sur votre boite mail.
         </div>
     </div>
    </div>
 
     <?php
-   /*
-    $to_email = $_SESSION['mail'];
-    $subject = "Receipt";
-    $body = "Thank You to buy : $_SESSION[sum]";
+    $to_email = "$_SESSION[mail],testadressimad@gmail.com";
+    $subject = "Confirmation de votre achat";
+    $body = "Merci pour votre achat d'un montant de : $_SESSION[sum] \n Vos produits vous seront livrés le plus rapidement possible \n Merci de nous faire confiance \n A la prochaine.";
     $headers = "From: testadressimad@gmail.com";
     if ( mail($to_email, $subject, $body, $headers)) 
     {
@@ -83,7 +82,6 @@
     {
         echo("Email sending failed...");
     }
-    */
     ?>
 
 
