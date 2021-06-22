@@ -2,7 +2,7 @@
     include('header2.php');
     include('config.php');
 
-    $_SESSION['adresse']=$_POST['adresse'];
+    $_SESSION['adresse']=@$_POST['adresse'];
 
     if(@$_POST['existe'] != 1 && isset($_POST['existe']))
     {
@@ -59,4 +59,7 @@
             </div>
         </div>
     </div>
+    <form action="facture.php" method="POST">
+    <input id="send" type="submit">
+    </form>
 <?php include('footer.php'); ?>

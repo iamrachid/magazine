@@ -21,7 +21,7 @@ function validateCard(num)
   }
   if((oddSum + evenSum) % 10 === 0)
   {
-    window.location.replace("facture.php");
+    document.getElementById("send").click();;
   }
   else
   {
