@@ -1,7 +1,7 @@
 <?php
 include('header.php');
 require_once('config.php');
-if (isset($_POST['lock']) && $_POST['lock'] == 'root') {
+if (isset($_SESSION['user']) && $_SESSION['user'] == 'admin') {
 ?>
     <div style="min-height:calc(100vh - 115px);max-width:960px;margin: 0 auto;" class="p-5 d-flex justify-content-center align-content-center">
         <div class="row w-75 mx-auto">
@@ -51,22 +51,7 @@ if (isset($_POST['lock']) && $_POST['lock'] == 'root') {
 
 <?php
 } else {
-?>
-    <div style="min-height:calc(100vh - 115px);max-width:960px;margin: 0 auto;" class="p-5 d-flex justify-content-center align-content-center">
-        <div class="row w-75 mx-auto">
-            <div class="p-4 border w-75 mx-auto">
-                <form method="POST" class="form-group">
-                    <label class="label-control">Cette page est verouillé, Veillez saisir le mot de passe pour y accéder.</label>
-                    <input required type="password" name="lock" placeholder="Mot de passe" class="mt-2 form-control">
-                    <input type="submit" class="btn btn-primary mt-2" value="Deverouiller" />
-                </form>
-                <div class="mt-2">
-                    <a href="index.php">Revenir au page d'accueil</a>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php
+    header('Location:admin.php');
 }
 
 include('footer.php'); ?>

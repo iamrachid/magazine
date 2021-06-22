@@ -1,6 +1,11 @@
 <?php
 include('header.php');
 require_once('config.php');
+if(isset($_POST['id'])){
+    $ida = $_POST['id'];
+    $del="DELETE FROM article WHERE id_article = '$ida'";
+    @mysqli_query($id, $del);
+}
 if (isset($_POST['lock']) && $_POST['lock'] == 'root'){
     @session_start();
     $_SESSION['user'] = 'admin';
@@ -12,7 +17,8 @@ if (isset($_SESSION['user']) && $_SESSION['user'] == 'admin') {
     <div style="min-height:calc(100vh - 115px);max-width:960px;margin: 0 auto;" class="p-5 d-flex justify-content-center align-content-center">
         <div class="row w-75 mx-auto">
             <div class="p-4 border w-75 mx-auto">
-         
+                
+            <a href="add-product.php">Ajouter un produit</a>
                        <table class="table table-striped">
                           <thead>
                              <tr>
@@ -33,10 +39,9 @@ if (isset($_SESSION['user']) && $_SESSION['user'] == 'admin') {
                                 <td><?=$product['designation'] ?></td>
                                 <td><?=$product['prix'] ?></td>
                                 <td>
-                                    <form action="<?= $_SERVER['PHP_SELF']?>">
-                                        <input type="hidden" name="id" value="<?=$product['id']?>">
-                                        <label for="delete"><i class="fa fa-trash"></i></label>
-                                        <input id="delete" type="submit" value="delete">
+                                    <form action="<?= $_SERVER['PHP_SELF']?>" method="POST">
+                                        <input type="hidden" name="id" value="<?=$product['id_article']?>">
+                                        <input id="delete" type="submit" value="delete" class="btn btn-danger">
                                     </form>
                                 </td>
                                 
@@ -53,7 +58,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] == 'admin') {
 } else {
 ?>
     <div style="min-height:calc(100vh - 115px);max-width:960px;margin: 0 auto;" class="p-5 d-flex justify-content-center align-content-center">
-        <div class="row w-75 mx-auto">
+        <div class="w-75 mx-auto">
             <div class="p-4 border w-75 mx-auto">
                 <form method="POST" class="form-group">
                     <label class="label-control">Cette page est verouillé, Veillez saisir le mot de passe pour y accéder.</label>
