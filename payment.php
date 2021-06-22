@@ -4,7 +4,7 @@
 
     $_SESSION['adresse']=$_POST['adresse'];
 
-    if(@$_POST['existe'] != 1 && !empty(@$_POST['existe']))
+    if(@$_POST['existe'] != 1 && isset($_POST['existe']))
     {
         $nom=@$_POST['nom'];
         $prenom=@$_POST['prenom'];
