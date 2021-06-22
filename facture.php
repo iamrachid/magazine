@@ -60,6 +60,14 @@
    </header>
     
 
+   <div style="min-height:calc(100vh - 115px);max-width:960px;margin: 0 auto;" class="p-5 d-flex justify-content-center align-content-center">
+    <div class="w-75 mx-auto">
+        <div class="p-4 border w-75 mx-auto">
+            <i class="fa fa-check-circle green"></i>
+            Votre Paiement est bien effectué, Vous pouvez consulter votre facture sur votre boite mail.
+        </div>
+    </div>
+   </div>
 
     <?php
    /*
@@ -67,7 +75,6 @@
     $subject = "Receipt";
     $body = "Thank You to buy : $_SESSION[sum]";
     $headers = "From: testadressimad@gmail.com";
-    
     if ( mail($to_email, $subject, $body, $headers)) 
     {
         echo("Email successfully sent to $to_email...");
