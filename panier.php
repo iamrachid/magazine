@@ -13,6 +13,7 @@
         if($coord != NULL)
         {
             $connecte=1;
+            $_SESSION['mail']=$email;
         }
         else
         {

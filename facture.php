@@ -35,7 +35,23 @@
     
 
 
-
+    <?php
+   /*
+    $to_email = $_SESSION['mail'];
+    $subject = "Receipt";
+    $body = "Thank You to buy : $_SESSION[sum]";
+    $headers = "From: testadressimad@gmail.com";
+    
+    if ( mail($to_email, $subject, $body, $headers)) 
+    {
+        echo("Email successfully sent to $to_email...");
+    } 
+    else 
+    {
+        echo("Email sending failed...");
+    }
+    */
+    ?>
 
 
 <?php session_destroy(); ?>
