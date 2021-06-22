@@ -3,7 +3,6 @@ include('header.php');
 require_once('config.php');
 if (isset($_POST['lock']) && $_POST['lock'] == 'root') {
 ?>
-
     <div style="min-height:calc(100vh - 115px);max-width:960px;margin: 0 auto;" class="p-5 d-flex justify-content-center align-content-center">
         <div class="row w-75 mx-auto">
             <div class="p-4 border w-75 mx-auto">
