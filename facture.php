@@ -6,7 +6,7 @@
    mysqli_query($id,$requete);
    $requete="SELECT `id_comm` FROM `commande` WHERE `id_client`='$_SESSION[id_client]' AND `date`='$date';";
    $result=mysqli_query($id,$requete);
-   $cord=mysqli_fetch_row($result);
+   $coord=mysqli_fetch_row($result);
    $id_commande=$coord[0];
 
    for ($i=0 ; $i < count($_SESSION['name_article']) ; $i++)
