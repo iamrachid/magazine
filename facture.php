@@ -1,12 +1,12 @@
 <?php 
    session_start();
    include_once('config.php');
-   $date=date("Y-m-d");
+   $date=date("Y-m-d h:i:s");
    $requete="INSERT INTO `commande`(`id_client`, `date`) VALUES ('$_SESSION[id_client]','$date');";
    mysqli_query($id,$requete);
    $requete="SELECT `id_comm` FROM `commande` WHERE `id_client`='$_SESSION[id_client]' AND `date`='$date';";
    $result=mysqli_query($id,$requete);
-   $coord=mysqli_fetch_row($result);
+   $cord=mysqli_fetch_row($result);
    $id_commande=$coord[0];
 
    for ($i=0 ; $i < count($_SESSION['name_article']) ; $i++)
@@ -72,7 +72,7 @@
     <?php
     $to_email = "$_SESSION[mail],testadressimad@gmail.com";
     $subject = "Confirmation de votre achat";
-    $body = "Merci pour votre achat d'un montant de : $_SESSION[sum] $\nVos produits vous seront livrés le plus rapidement possible \nMerci de nous faire confiance \nA la prochaine.";
+    $body = "Merci pour votre achat passé le : $date d'un montant de : $_SESSION[sum] $\nVos produits vous seront livrés le plus rapidement possible \nMerci de nous faire confiance \nA la prochaine.";
     $headers = "From: testadressimad@gmail.com";
     if ( mail($to_email, $subject, $body, $headers)) 
     {
