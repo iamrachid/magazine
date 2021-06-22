@@ -65,14 +65,17 @@
         <div class="p-4 border w-75 mx-auto">
             <i class="fa fa-check-circle green"></i>
             Votre Paiement est bien effectué, Vous pouvez consulter votre reçu sur votre boite mail.
+            </br>
+            <a href="index.php">Retour a la page d'acceuil</a>
         </div>
+        
     </div>
    </div>
 
     <?php
     $to_email = "$_SESSION[mail],testadressimad@gmail.com";
     $subject = "Confirmation de votre achat";
-    $body = "Merci pour votre achat passé le : $date d'un montant de : $_SESSION[sum] $\nVos produits vous seront livrés le plus rapidement possible \nMerci de nous faire confiance \nA la prochaine.";
+    $body = "Merci pour votre achat passé le : $date d'un montant de : $_SESSION[sum] $\nVos produits vous seront livrés le plus rapidement possible à l'adresse \"$_SESSION[adresse]\"\nMerci de nous faire confiance \nA la prochaine.";
     $headers = "From: testadressimad@gmail.com";
     if ( mail($to_email, $subject, $body, $headers)) 
     {

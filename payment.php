@@ -2,6 +2,7 @@
     include('header2.php');
     include('config.php');
 
+    $_SESSION['adresse']=$_POST['adresse'];
 
     if(@$_POST['existe'] != 1 && !empty(@$_POST['existe']))
     {
@@ -40,14 +41,14 @@
                         <h5>Information Bancaire</h5>
                         <form method="POST">
                             <span>Card Number:</span>
-                            <input id="creditcard" placeholder="999-9999-9999-9909" class="form-control" name="card" required>
+                            <input id="creditcard" placeholder="999-9999-9999-9909" class="form-control" name="card" >
                             <div class="row">
                                 <div class="col-6"><span>Expiry date:</span>
-                                    <input id="expiration" placeholder="YY/MM" class="form-control" required>
+                                    <input id="expiration" placeholder="YY/MM" class="form-control" >
                                 </div>
                                 <div class="col-6 mb-3 ">
                                     <span>CVV:</span>
-                                    <input id="cvv" placeholder="999" class="form-control" required>
+                                    <input id="cvv" placeholder="999" class="form-control" >
                                 </div>
                             </div>
                             <button class="btn btn-primary" onclick="validateCard(document.getElementById('creditcard').value,document.getElementById('expiration').value,document.getElementById('cvv').value)">Payer</button>
