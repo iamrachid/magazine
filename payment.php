@@ -60,6 +60,4 @@ if (@$_POST['existe'] != 1 && isset($_POST['existe'])) {
         </div>
     </div>
 </div>
-<form action="facture.php" method="POST">
-</form>
 <?php include('footer.php'); ?>
