@@ -7,13 +7,14 @@
 
         $email=$_POST["mail"];
         $mdp=$_POST["password"];
-        $requete="SELECT `nom`, `prenom`, `age`, `adresse`, `ville` FROM `client` WHERE `mail`='$email' AND `pass`='$mdp'; ";
+        $requete="SELECT `nom`, `prenom`, `age`, `adresse`, `ville`,`id_client` FROM `client` WHERE `mail`='$email' AND `pass`='$mdp'; ";
         $resultat=mysqli_query($id,$requete);
         $coord=mysqli_fetch_row($resultat);
         if($coord != NULL)
         {
             $connecte=1;
             $_SESSION['mail']=$email;
+            $_SESSION['id_client']=$coord[5];
         }
         else
         {
@@ -116,15 +117,18 @@
                         $price=$_SESSION['prix_article'][$i];
                         $image=$_SESSION['image_article'][$i];
                         $quantite=$_SESSION['quantite_article'][$i];
-                        echo "<div class=\"row py-2\">";
-                        echo "    <div class=\"col-4 align-self-center\"><img class=\"img-fluid\" src=\"$image\"></div>";
-                        echo "    <div class=\"col-8\">";
-                        echo "        <div class=\"row\"><b>$price$</b></div>";
-                        echo "        <div class=\"row text-muted\">$name</div>";
-                        echo "        <div class=\"row\">Qty:$quantite</div>";
-                        echo "    </div>";
-                        echo "</div>";
-                        $sum+=$price*$quantite;
+                        if($quantite>0)
+                        {
+                            echo "<div class=\"row py-2\">";
+                            echo "    <div class=\"col-4 align-self-center\"><img class=\"img-fluid\" src=\"$image\"></div>";
+                            echo "    <div class=\"col-8\">";
+                            echo "        <div class=\"row\"><b>$price$</b></div>";
+                            echo "        <div class=\"row text-muted\">$name</div>";
+                            echo "        <div class=\"row\">Qty:$quantite</div>";
+                            echo "    </div>";
+                            echo "</div>";
+                            $sum+=$price*$quantite;
+                        }  
                     }
                 ?>
                 </div>

@@ -1,5 +1,31 @@
 <?php 
    session_start();
+   include_once('config.php');
+   $date=date("Y-m-d");
+   $requete="INSERT INTO `commande`(`id_client`, `date`) VALUES ('$_SESSION[id_client]','$date');";
+   mysqli_query($id,$requete);
+   $requete="SELECT `id_comm` FROM `commande` WHERE `id_client`='$_SESSION[id_client]' AND `date`='$date';";
+   $result=mysqli_query($id,$requete);
+   $coord=mysqli_fetch_row($result);
+   $id_commande=$coord[0];
+
+   for ($i=0 ; $i < count($_SESSION['name_article']) ; $i++)
+   {
+      $name=$_SESSION['name_article'][$i];
+      $price=$_SESSION['prix_article'][$i];
+      $quantite=$_SESSION['quantite_article'][$i];
+      $image=$_SESSION['image_article'][$i];
+      
+      if($quantite>0)
+      {
+         $requete="SELECT `id_article` FROM `article` WHERE `designation`='$name' AND `prix`='$price' AND `image`='$image';";
+         $result=mysqli_query($id,$requete);
+         $coord=mysqli_fetch_row($result);
+         $id_article=$coord[0];
+         $requete="INSERT INTO `ligne`(`id_comm`, `id_article`, `quantite`, `prix_unit`) VALUES ('$id_commande','$id_article','$quantite','$price');";
+         mysqli_query($id,$requete);
+      }  
+   }
 ?>
 
 <!DOCTYPE html>

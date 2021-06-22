@@ -16,6 +16,10 @@
 
         $requete="INSERT INTO `client`(`nom`, `prenom`, `age`, `adresse`, `ville`, `mail`, `pass`) VALUES ('$nom','$prenom','$age','$adresse','$ville','$mail','$password');";
         mysqli_query($id,$requete);
+        $requete="SELECT `id_client` FROM `client` WHERE `mail`='$mail' AND `pass`='$password';";
+        $result=mysqli_query($id,$requete);
+        $coord=mysqli_fetch_row($result);
+        $_SESSION['id_client']=$coord[0];
     }
 ?>
 
