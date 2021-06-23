@@ -10,25 +10,26 @@
         }
         $categorie=$_SESSION['categorie'];
         $search_name=$_SESSION['search_name'];
+        $order = isset($_GET['order']) ? $_GET['order'] : 'designation';
 
         if($categorie == "tous")
             if(empty($search_name))
             {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1 ORDER BY $order;";
             }
             else
             {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name';";
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' ORDER BY $order;";
             }
         else
         {
             if(empty($search_name))
             {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie' ORDER BY $order;";
             }
             else
             {
-                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' AND `categorie` LIKE '$categorie';";
+                $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '$search_name' AND `categorie` LIKE '$categorie' ORDER BY $order;";
             }
         }
         $result=mysqli_query($id,$query);
