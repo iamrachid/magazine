@@ -65,22 +65,19 @@
                      <a class="nav-link" href="admin.php">Admin</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                     <a class="nav-link" href="research.php?category=informatique">Informatique</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="research.php?search=informatique">Informatique</a>
+                     <a class="nav-link" href="research.php?category=video">Video</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="research.php?search=video">Video</a>
+                     <a class="nav-link" href="research.php?category=divers">Divers</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="research.php?search=divers">Divers</a>
+                     <a class="nav-link" href="research.php?category=photo">Photos</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="research.php?search=photo">Photos</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="research.php?search=tous">Tous les produits</a>
+                     <a class="nav-link" href="research.php?category=tous">Tous les produits</a>
                   </li>
                </ul>
                <span type="button" class="icon-cart">
