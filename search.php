@@ -2,9 +2,9 @@
 <?php include_once('header.php');?>
 <?php require_once('functions.php');?>
 <?php
-        if(!empty(@$_GET['search']))
+        if(!empty(@$_GET['category']))
         {
-                $_SESSION['categorie']=$_GET['search'];
+                $_SESSION['categorie']=$_GET['category'];
         }
 
         $categorie=$_SESSION['categorie'];
