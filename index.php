@@ -5,7 +5,7 @@
                <div class="row">
                   <div class="find-box">
                      <h1 class="heading">Chercher par nom du produit</h1>
-                     <form action="search.php" method="GET" class="d-flex">
+                     <form action="research.php" method="GET" class="d-flex">
                         <div class="col-sm-5">
                            <div class="form-sh">
                               <input type="text" placeholder="Nom Produit" name="search">
