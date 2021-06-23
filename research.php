@@ -44,10 +44,14 @@
                 </h4>
                 <div class="d-flex align-items-center">
                     <span  class="text-nowrap px-2">Trier par: </span>
-                    <select name="order" class="form-select">
-                        <option value="price">Prix</option>
-                        <option value="brand">Marque</option>
-                    </select>
+                    <form action="<?=$_SERVER['PHP_SELF']?>">
+                        <input type="hidden" name="category" value="<?= $categorie ?>">
+                        <input type="hidden" name="search" value="<?= $search_name ?>">
+                        <select name="order"  onchange="this.form.submit()" class="form-select">
+                            <option value="designation">Marque</option>
+                            <option value="prix">Prix</option>
+                        </select>
+                    </form>
                 </div>
             </div>
             <div class="d-flex justify-content-between">
@@ -76,4 +80,14 @@
         </div>
     </div>
 </div>
+<script>
+    var order = document.getElementsByName('order')[0];
+    for(var opt,j = 0;opt = order.options[j];j++){
+        if(opt.value == '<?=$order?>'){
+            order.selectedIndex = j;
+            break;
+        }
+
+    }
+</script>
 <?php include('footer.php'); ?>
