@@ -2,7 +2,7 @@
 <?php include_once('header.php');?>
 <?php require_once('functions.php');?>
 <?php
-        if(empty(@$_GET['category']))
+        /*if(empty(@$_GET['category']))
             $categorie = 'tous';
         else
             $categorie=@$_GET['category'];
@@ -30,7 +30,26 @@
                 $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `designation` LIKE '%$search_name%' AND `categorie` LIKE '$categorie' ORDER BY $order;";
             }
         }
+        $result=mysqli_query($id,$query);*/
+
+        if(!empty(@$_GET['search']))
+        {
+                $_SESSION['categorie']=$_GET['search'];
+        }
+
+        $categorie=$_SESSION['categorie'];
+        
+        if($categorie=="tous")
+        {
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE 1";
+        }
+        else
+        {
+            $query="SELECT `designation`, `prix`, `image` FROM `article` WHERE `categorie` LIKE '$categorie'";
+        }
+
         $result=mysqli_query($id,$query);
+
 ?>
 <div style="min-height:calc(100vh - 115px);max-width:960px;" class="mx-auto">
     <div class="container p-2">
