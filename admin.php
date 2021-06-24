@@ -23,8 +23,8 @@ if (isset($_SESSION['user']) && $_SESSION['user'] == 'admin') {
                           <thead>
                              <tr>
                                 <th scope="col">Image</th>
-                                <th scope="col">Article</th>
-                                <th scope="col">Quantite</th>
+                                <th scope="col">Catégorie</th>
+                                <th scope="col">Nom article</th>
                                 <th scope="col">Prix unitaire</th>
                              <tr>
                           </thead>

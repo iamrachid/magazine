@@ -73,7 +73,7 @@
    </div>
 
     <?php
-    $to_email = "$_SESSION[mail],testadressimad@gmail.com";
+    $to_email = "$_SESSION[mail],ensaprojet87@gmail.com";
     $subject = "Confirmation de votre achat";
     $body = "Merci pour votre achat passé le : $date d'un montant de : $_SESSION[sum] $\nVos produits vous seront livrés le plus rapidement possible à l'adresse \"$_SESSION[adresse]\"\nMerci de nous faire confiance \nA la prochaine.";
     $headers = "From: testadressimad@gmail.com";

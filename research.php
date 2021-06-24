@@ -6,7 +6,7 @@
         if(!empty(@$_GET['category']))
         {
             $_SESSION['categorie']=@$_GET['category'];
-            $_SESSION['search_name']=@$_GET['search_name'];
+            $_SESSION['search_name']=@$_GET['search'];
         }
         $categorie=$_SESSION['categorie'];
         $search_name=$_SESSION['search_name'];
